@@ -1,4 +1,4 @@
-orcale 20180520
+﻿orcale 
 
 1.建立user帳號
 
@@ -11,19 +11,31 @@ orcale 20180520
 
 	CREATE USER c##scott INDETIFIED BY tiger;  
 
+	create user c##iformcare identified by 0000;
+
+create user c##testuser identified by 0000;
+	
 4.為用戶授權
 
 	GRANT connect,resource,unlimited tablespace TO c##scott container=ALL;  
 
+	GRANT connect,resource,unlimited tablespace TO c##iformcare container=ALL;  
+        GRANT CREATE VIEW TO c##iformcare container=ALL;
+	
 5.設置用戶使用的TABLE空間
 
 	ALTER USER c##scott default tablespace users;    
 	ALTER USER c##scott temporary tablespace temp;  
-	
+
+	ALTER USER c##iformcare default tablespace users;    
+	ALTER USER c##iformcare temporary tablespace temp; 
+
 
 6.使用scott用戶登入
 
 	CONNECT c##scott/tiger 
+
+	CONNECT c##iformcare/0000
 
 7.顯示當前登入用戶
 	SHOW USER  
@@ -40,6 +52,7 @@ orcale 20180520
 查看PATBASE 的屬性
 
 	DESCRIBE PATBASE;
+	DESC     PATBASE;
 
 清空畫面上的資訊
 
